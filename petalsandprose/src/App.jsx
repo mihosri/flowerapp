@@ -15,6 +15,7 @@ function App() {
     <>
       <div className="container">
         <div className="header">
+          <p className='title'>Petals and Prose</p>
           <p className="slogan">Where every bloom tells a story!</p>
         </div>
         <Swiper
