@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
@@ -8,14 +8,41 @@ import 'swiper/css/navigation';
 
 import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
 import slide_image from './assets/rose.jpg';
-import logo from './assets/logo.png';
+import axios from 'axios';
+
+const API_URL = 'https://api.unsplash.com/search/photos';
+const IMAGES_PER_PAGE = 1;
+let imageURLValue = '';
 
 function App() {
+  console.log('key', import.meta.env.VITE_API_KEY);
+  const [imageURL, setImageURL] = useState('');
+  useEffect(() => {
+    const getImages = async () => {
+      try {
+        const { data } = await axios.get(
+          `${API_URL}?query=redrose&page=1&per_page=${IMAGES_PER_PAGE}&client_id=${
+            import.meta.env.VITE_API_KEY
+          }`
+        );
+
+        console.log('result', data);
+        imageURLValue = data.results[0].urls.small;
+        setImageURL(imageURLValue);
+      } catch (error) {
+        console.log(error);
+      }
+      
+    };
+
+    getImages();
+  }, []);
+
   return (
     <>
       <div className="container">
         <div className="header">
-          <p className='title'>Petals and Prose</p>
+          <p className="title">Petals and Prose</p>
           <p className="slogan">Where every bloom tells a story!</p>
         </div>
         <Swiper
@@ -35,24 +62,24 @@ function App() {
           className="swiper_container"
         >
           <SwiperSlide>
-            <img src={slide_image} alt="slide_image" />
+            <img src={imageURL} alt="slide_image" />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={slide_image} alt="slide_image" />
+            <img src={imageURL} alt="slide_image" />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={slide_image} alt="slide_image" />
+            <img src={imageURL} alt="slide_image" />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={slide_image} alt="slide_image" />
+            <img src={imageURL} alt="slide_image" />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={slide_image} alt="slide_image" />
+            <img src={imageURL} alt="slide_image" />
           </SwiperSlide>
           <SwiperSlide>
-            <img src={slide_image} alt="slide_image" />
+            <img src={imageURL} alt="slide_image" />
           </SwiperSlide>
-          
+
           <div className="slider-controler">
             <div className="swiper-button-prev slider-arrow">
               <ion-icon name="arrow-back-outline"></ion-icon>
@@ -64,8 +91,10 @@ function App() {
           </div>
         </Swiper>
 
-        <div className='prose'>
-          <p className='flower'>Red Rose: <span className='meaning'>Love</span></p>
+        <div className="prose">
+          <p className="flower">
+            Red Rose: <span className="meaning">Love</span>
+          </p>
         </div>
       </div>
     </>
