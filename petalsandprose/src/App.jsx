@@ -8,12 +8,15 @@ import 'swiper/css/navigation';
 
 import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
 import slide_image from './assets/rose.jpg';
+import logo from './assets/logo.png';
 
 function App() {
   return (
     <>
       <div className="container">
-        <h1 className="heading">Petals and Prose</h1>
+        <div className="header">
+          <p className="slogan">Where every bloom tells a story!</p>
+        </div>
         <Swiper
           effect={'coverflow'}
           grabCursor={true}
@@ -48,7 +51,7 @@ function App() {
           <SwiperSlide>
             <img src={slide_image} alt="slide_image" />
           </SwiperSlide>
-
+          
           <div className="slider-controler">
             <div className="swiper-button-prev slider-arrow">
               <ion-icon name="arrow-back-outline"></ion-icon>
@@ -59,6 +62,10 @@ function App() {
             <div className="swiper-pagination"></div>
           </div>
         </Swiper>
+
+        <div className='prose'>
+          <p className='flower'>Red Rose: <span className='meaning'>Love</span></p>
+        </div>
       </div>
     </>
   );
