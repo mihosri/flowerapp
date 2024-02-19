@@ -1,5 +1,5 @@
-import { initializeApp } from 'firebase/app'
-import { getFirestore, collection } from 'firebase/firestore/lite';
+const firebase = require('firebase')
+
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAV54Zl2SaPwazi-dTitVjbGrdqPbD5ViI',
@@ -12,7 +12,7 @@ const firebaseConfig = {
 }
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const Flower = collection(db,'Flowers')
-module.exports = Flower
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore()
+const Flower = db.collection('Flowers')
+module.exports = Flower;
