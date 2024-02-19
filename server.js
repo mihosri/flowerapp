@@ -1,8 +1,12 @@
-const express = require('express')
+const express = require('express');
+const app = express();
+
+const PORT = 1337;
+
 const cors = require('cors')
 const Flower = require('./config')
 
-const app = express()
+
 app.use(express.json())
 app.use(cors())
 
@@ -34,4 +38,4 @@ app.delete('/delete', async (req, res) => {
   res.send({ msg: 'Flower deleted' })
 })
 
-app.listen(4000, () => console.log('Server is up and running 4000'))
+app.listen(PORT, () => console.log(`Server is up and running ${PORT}`))
