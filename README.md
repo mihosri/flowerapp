@@ -1,3 +1,6 @@
+# Goal
+Monetize api
+
 # PetalsandProse
 Where every bloom tells a story.
 
