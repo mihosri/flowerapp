@@ -1,4 +1,4 @@
-# flowers and meanings
+# flowerapp
 Where every bloom tells a story.
 
 # How to get started
