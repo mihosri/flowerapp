@@ -1,4 +1,4 @@
-# PetalsandProse
+# flowers and meanings
 Where every bloom tells a story.
 
 # How to get started
